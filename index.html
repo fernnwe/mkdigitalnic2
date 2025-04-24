@@ -177,7 +177,7 @@
 
   enviarBtn.addEventListener("click", () => {
     const mensaje = `Hola, estoy interesado en los siguientes servicios:%0A%0A${carrito.map(s => "- " + s).join("%0A")}`;
-    const url = `https://wa.me/50500000000?text=${mensaje}`; // Cambia el número a tu WhatsApp real
+    const url = `https://wa.me/50581088124?text=${mensaje}`; // Cambia el número a tu WhatsApp real
     window.open(url, "_blank");
   });
 </script>
@@ -244,14 +244,18 @@
         return;
       }
   
-      const texto = `Hola, soy ${nombre} (Email: ${correo}) y me gustaría decir lo siguiente:\n${mensaje}`;
-      const telefono = '50581088124'; // Asegúrate que esté bien escrito
+      // Formateamos el texto
+      const texto = `Hola, soy ${nombre} (Email: ${correo}) y me gustaría decir lo siguiente:%0A${mensaje}`;
+      const telefono = '50581088124'; // Asegúrate de que el número esté correctamente escrito
   
+      // URL de WhatsApp con el número y el mensaje
       const url = `https://wa.me/${telefono}?text=${encodeURIComponent(texto)}`;
   
-      window.open(url, '_blank');
+      // Abrimos WhatsApp en una nueva ventana o pestaña
+      window.location.href = url;
     });
   </script>
+  
   
 <!-- Botón Flotante de WhatsApp con icono de mensaje -->
 <a href="https://wa.me/+50581088124" target="_blank" class="fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 flex items-center justify-center">
