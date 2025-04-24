@@ -18,7 +18,6 @@
         <nav class="hidden md:flex space-x-6">
           <a href="#inicio" class="text-gray-700 hover:text-blue-600 font-medium transition">Inicio</a>
           <a href="#servicios" class="text-gray-700 hover:text-blue-600 font-medium transition">Servicios</a>
-          <a href="#portafolio" class="text-gray-700 hover:text-blue-600 font-medium transition">Otros Servicios</a>
           <a href="#contacto" class="text-gray-700 hover:text-blue-600 font-medium transition">Contacto</a>
         </nav>
         <div class="md:hidden">
@@ -33,7 +32,6 @@
     <div id="mobile-menu" class="md:hidden hidden px-4 pb-4">
       <a href="#inicio" class="block py-2 text-gray-700 hover:text-blue-600">Inicio</a>
       <a href="#servicios" class="block py-2 text-gray-700 hover:text-blue-600">Servicios</a>
-      <a href="#portafolio" class="block py-2 text-gray-700 hover:text-blue-600">Portafolio</a>
       <a href="#contacto" class="block py-2 text-gray-700 hover:text-blue-600">Contacto</a>
     </div>
   </header>
@@ -177,7 +175,7 @@
 
   enviarBtn.addEventListener("click", () => {
     const mensaje = `Hola, estoy interesado en los siguientes servicios:%0A%0A${carrito.map(s => "- " + s).join("%0A")}`;
-    const url = `https://wa.me/50581088124?text=${mensaje}`; // Cambia el número a tu WhatsApp real
+    const url = `https://wa.me/50581088124?text=${mensaje}`; 
     window.open(url, "_blank");
   });
 </script>
@@ -245,7 +243,7 @@
       }
   
       // Formateamos el texto
-      const texto = `Hola, soy ${nombre} (Email: ${correo}) y me gustaría decir lo siguiente:%0A${mensaje}`;
+      const texto = `Hola, soy ${nombre} (Email: ${correo}) y me gustaría decir lo siguiente:${mensaje}`;
       const telefono = '50581088124'; // Asegúrate de que el número esté correctamente escrito
   
       // URL de WhatsApp con el número y el mensaje
