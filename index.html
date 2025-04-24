@@ -139,12 +139,21 @@
   </div>
 </section> <!-- CIERRE AÑADIDO AQUÍ -->
 
+<!-- Botón flotante para abrir el carrito -->
+<button id="abrir-carrito" class="fixed bottom-20 right-4 bg-blue-600 text-white p-3 rounded-full shadow-xl hidden z-40 hover:bg-blue-700 transition">
+  🛒
+</button>
+
 <!-- Carrito flotante -->
 <div id="carrito" class="fixed bottom-4 right-4 bg-white shadow-2xl rounded-2xl p-4 w-72 z-50 border border-gray-200 hidden">
-  <h3 class="text-xl font-semibold mb-2 text-blue-700">🛒 Carrito</h3>
+  <div class="flex justify-between items-center mb-2">
+    <h3 class="text-xl font-semibold text-blue-700">🛒 Añadir al Carrito</h3>
+    <button id="cerrar-carrito" class="text-gray-500 hover:text-red-600 text-xl font-bold">&times;</button>
+  </div>
   <ul id="lista-carrito" class="text-gray-700 text-sm space-y-1 max-h-40 overflow-y-auto"></ul>
   <button id="enviar-carrito" class="mt-4 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition">Enviar por WhatsApp</button>
 </div>
+
 
 <!-- Script del carrito -->
 <script>
@@ -161,23 +170,38 @@
     });
   });
 
-  function actualizarCarrito() {
-    listaCarrito.innerHTML = "";
-    carrito.forEach((servicio, i) => {
-      const li = document.createElement("li");
-      li.textContent = `✅ ${servicio}`;
-      listaCarrito.appendChild(li);
-    });
-    if (carrito.length > 0) {
-      contenedorCarrito.classList.remove("hidden");
-    }
+  const abrirBtn = document.getElementById("abrir-carrito");
+
+function actualizarCarrito() {
+  listaCarrito.innerHTML = "";
+  carrito.forEach((servicio, i) => {
+    const li = document.createElement("li");
+    li.textContent = `✅ ${servicio}`;
+    listaCarrito.appendChild(li);
+  });
+
+  if (carrito.length > 0) {
+    contenedorCarrito.classList.remove("hidden");
+    abrirBtn.classList.remove("hidden");
   }
+}
+
+abrirBtn.addEventListener("click", () => {
+  contenedorCarrito.classList.remove("hidden");
+});
+
 
   enviarBtn.addEventListener("click", () => {
     const mensaje = `Hola, estoy interesado en los siguientes servicios:%0A%0A${carrito.map(s => "- " + s).join("%0A")}`;
     const url = `https://wa.me/50581088124?text=${mensaje}`; 
     window.open(url, "_blank");
   });
+
+  const cerrarBtn = document.getElementById("cerrar-carrito");
+
+cerrarBtn.addEventListener("click", () => {
+  contenedorCarrito.classList.add("hidden");
+});
 </script>
 
       
@@ -255,10 +279,7 @@
   </script>
   
   
-<!-- Botón Flotante de WhatsApp con icono de mensaje -->
-<a href="https://wa.me/+50581088124" target="_blank" class="fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 flex items-center justify-center">
-  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8" viewBox="0 0 24 24"><path d="M3.4 1.6c-.5 0-.9.4-.9.9v14.8c0 .5.4.9.9.9h14.8c.5 0 .9-.4.9-.9V3.4c0-.5-.4-.9-.9-.9H3.4zm9.8 13.8H4.2V5.6h9.8v9.8z"></path></svg>
-</a>
+
 
   <!-- Footer -->
   <footer class="bg-white border-t mt-12">
