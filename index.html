@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mkdigitalnic</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+<body class="bg-white text-gray-800">
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <span class="text-2xl font-bold text-blue-600">Mkdigitalnic</span>
+        </div>
+        <nav class="hidden md:flex space-x-6">
+          <a href="#inicio" class="text-gray-700 hover:text-blue-600 font-medium transition">Inicio</a>
+          <a href="#servicios" class="text-gray-700 hover:text-blue-600 font-medium transition">Servicios</a>
+          <a href="#portafolio" class="text-gray-700 hover:text-blue-600 font-medium transition">Otros Servicios</a>
+          <a href="#contacto" class="text-gray-700 hover:text-blue-600 font-medium transition">Contacto</a>
+        </nav>
+        <div class="md:hidden">
+          <button id="menu-toggle" class="focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4">
+      <a href="#inicio" class="block py-2 text-gray-700 hover:text-blue-600">Inicio</a>
+      <a href="#servicios" class="block py-2 text-gray-700 hover:text-blue-600">Servicios</a>
+      <a href="#portafolio" class="block py-2 text-gray-700 hover:text-blue-600">Portafolio</a>
+      <a href="#contacto" class="block py-2 text-gray-700 hover:text-blue-600">Contacto</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="inicio" class="bg-gradient-to-br from-blue-100 to-blue-50 py-24">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="text-5xl md:text-6xl font-extrabold text-blue-700 mb-6 leading-tight">Impulsa tu presencia digital con <span class="text-blue-900">Mkdigitalnic</span></h1>
+      <p class="text-xl text-gray-700 mb-10">Diseñamos experiencias web únicas que transforman tu negocio en una marca de alto impacto.</p>
+      <a href="#servicios" class="inline-block bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:bg-blue-800 transition">Nuestros Servicios</a>
+      <div class="mt-12">
+        <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_totrpclr.json" background="transparent" speed="1" style="width: 300px; margin: 0 auto;" loop autoplay></lottie-player>
+      </div>
+    </div>
+  </section>
+
+ <!-- Servicios -->
+<section id="servicios" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center text-blue-700 mb-14">Nuestros Servicios</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+  
+        <!-- Desarrollo Web -->
+        <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 hover:scale-105 transform transition text-center">
+          <div class="mb-4">
+            <svg class="w-16 h-16 text-blue-600 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h18M3 10h18M3 15h18M3 20h18" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold text-blue-700 mb-4">Desarrollo Web</h3>
+          <p class="text-gray-600">Sitios modernos, rápidos y adaptables para destacar en el mundo digital.</p>
+        </div>
+  
+        <!-- Diseño UI/UX -->
+        <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 hover:scale-105 transform transition text-center">
+          <div class="mb-4">
+            <svg class="w-16 h-16 text-blue-600 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold text-blue-700 mb-4">Diseño UI/UX</h3>
+          <p class="text-gray-600">Interfaz elegante, experiencia increíble. Porque el diseño sí importa.</p>
+        </div>
+  
+        <!-- Consultoría Digital -->
+        <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 hover:scale-105 transform transition text-center">
+          <div class="mb-4">
+            <svg class="w-16 h-16 text-blue-600 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold text-blue-700 mb-4">Consultoría Digital</h3>
+          <p class="text-gray-600">Estrategia digital con enfoque profesional y resultados reales.</p>
+        </div>
+  
+        <!-- Instalación de Office -->
+        <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 hover:scale-105 transform transition text-center">
+          <div class="mb-4">
+            <svg class="w-16 h-16 text-blue-600 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 3h14c1.104 0 2 .896 2 2v14c0 1.104-.896 2-2 2H5c-1.104 0-2-.896-2-2V5c0-1.104.896-2 2-2zM3 5h18v14H3V5z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold text-blue-700 mb-4">Instalación de Office</h3>
+          <p class="text-gray-600">Instalación y configuración de Microsoft Office en tus dispositivos.</p>
+        </div>
+  
+        <!-- Instalación de Photoshop -->
+        <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 hover:scale-105 transform transition text-center">
+          <div class="mb-4">
+            <svg class="w-16 h-16 text-blue-600 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h18M3 10h18M3 15h18M3 20h18" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold text-blue-700 mb-4">Instalación de Photoshop</h3>
+          <p class="text-gray-600">Instalación de Adobe Photoshop y configuración personalizada.</p>
+        </div>
+  
+        <!-- Instalación de Illustrator -->
+        <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 hover:scale-105 transform transition text-center">
+          <div class="mb-4">
+            <svg class="w-16 h-16 text-blue-600 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 3h12c1.104 0 2 .896 2 2v14c0 1.104-.896 2-2 2H6c-1.104 0-2-.896-2-2V5c0-1.104.896-2 2-2zM4 5h16v14H4V5z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold text-blue-700 mb-4">Instalación de Illustrator</h3>
+          <p class="text-gray-600">Instalación y personalización de Adobe Illustrator para tus proyectos.</p>
+        </div>
+  
+        <!-- Instalación de AutoCAD -->
+        <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 hover:scale-105 transform transition text-center">
+          <div class="mb-4">
+            <svg class="w-16 h-16 text-blue-600 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 3h12c1.104 0 2 .896 2 2v14c0 1.104-.896 2-2 2H6c-1.104 0-2-.896-2-2V5c0-1.104.896-2 2-2zM4 5h16v14H4V5z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold text-blue-700 mb-4">Instalación de AutoCAD</h3>
+          <p class="text-gray-600">Instalación y configuración de AutoCAD para tus proyectos de diseño.</p>
+        </div>
+  
+        <!-- Instalación de Antivirus -->
+        <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 hover:scale-105 transform transition text-center">
+          <div class="mb-4">
+            <svg class="w-16 h-16 text-blue-600 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold text-blue-700 mb-4">Instalación de Antivirus</h3>
+          <p class="text-gray-600">Protege tu equipo con un antivirus confiable y actualizado.</p>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Portafolio -->
+<section id="portafolio" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center text-blue-700 mb-14">También realizamos:</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        
+        <!-- Proyecto 1 -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden p-6 text-center hover:scale-105 transition transform">
+          <div class="flex justify-center mb-4">
+            <svg class="w-16 h-16 text-blue-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h18M3 10h18M3 15h18M3 20h18" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-blue-700">Tienda Online</h3>
+          <p class="text-sm text-gray-600">Ecommerce responsive con integración de botón de whatsapp</p>
+        </div>
+  
+        <!-- Proyecto 2 -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden p-6 text-center hover:scale-105 transition transform">
+          <div class="flex justify-center mb-4">
+            <svg class="w-16 h-16 text-blue-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-blue-700">Landing Page Profesional</h3>
+          <p class="text-sm text-gray-600">Diseño optimizado para captar clientes potenciales.</p>
+        </div>
+  
+        <!-- Proyecto 3 -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden p-6 text-center hover:scale-105 transition transform">
+          <div class="flex justify-center mb-4">
+            <svg class="w-16 h-16 text-blue-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M10 14h10M10 18h10" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-blue-700">Dashboard Administrativo</h3>
+          <p class="text-sm text-gray-600">Gestión completa y visual de datos empresariales.</p>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Contacto -->
+<section id="contacto" class="py-20 bg-blue-50">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center text-blue-700 mb-12">Contáctanos</h2>
+      <form id="contactForm" class="space-y-6 bg-white p-8 rounded-2xl shadow-xl">
+        <div>
+          <label class="block text-gray-700 font-medium">Nombre</label>
+          <input type="text" id="name" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300" />
+        </div>
+        <div>
+          <label class="block text-gray-700 font-medium">Correo Electrónico</label>
+          <input type="email" id="email" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300" />
+        </div>
+        <div>
+          <label class="block text-gray-700 font-medium">Mensaje</label>
+          <textarea id="message" class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300" rows="4"></textarea>
+        </div>
+        <button type="submit" class="bg-blue-700 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-800 transition">Enviar Mensaje</button>
+      </form>
+    </div>
+  </section>
+  
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+  
+      // Obtener los valores del formulario
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+  
+      // Crear el mensaje de WhatsApp con los datos del formulario
+      const whatsappMessage = `Hola, mi nombre es ${name}. Mi correo es ${email}. Mensaje: ${message}`;
+  
+      // Crear el enlace para enviar al número de WhatsApp
+      const whatsappLink = `https://wa.me/+50581088124?text=${encodeURIComponent(whatsappMessage)}`;
+  
+      // Redirigir al enlace de WhatsApp
+      window.open(whatsappLink, '_blank');
+    });
+  </script>
+  
+
+<!-- Botón Flotante de WhatsApp con icono de mensaje -->
+<a href="https://wa.me/+50581088124" target="_blank" class="fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 flex items-center justify-center">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-8 h-8" viewBox="0 0 24 24"><path d="M3.4 1.6c-.5 0-.9.4-.9.9v14.8c0 .5.4.9.9.9h14.8c.5 0 .9-.4.9-.9V3.4c0-.5-.4-.9-.9-.9H3.4zm9.8 13.8H4.2V5.6h9.8v9.8z"></path></svg>
+  </a>
+  
+  <!-- Footer -->
+  <footer class="bg-white border-t mt-12">
+    <div class="max-w-7xl mx-auto px-4 py-6 text-center text-sm text-gray-500">
+      &copy; 2025 Mkdigitalnic. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
