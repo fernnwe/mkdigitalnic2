@@ -37,17 +37,31 @@
   </header>
   
 
-  <!-- Hero Section -->
-  <section id="inicio" class="bg-gradient-to-br from-blue-100 to-blue-50 py-24">
-    <div class="max-w-7xl mx-auto px-4 text-center">
-      <h1 class="text-5xl md:text-6xl font-extrabold text-blue-700 mb-6 leading-tight">Impulsa tu presencia digital con <span class="text-blue-900">Mkdigitalnic</span></h1>
-      <p class="text-xl text-gray-700 mb-10">Diseñamos experiencias web únicas que transforman tu negocio en una marca de alto impacto.</p>
-      <a href="#servicios" class="inline-block bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:bg-blue-800 transition">Nuestros Servicios</a>
-      <div class="mt-12">
-        <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_totrpclr.json" background="transparent" speed="1" style="width: 300px; margin: 0 auto;" loop autoplay></lottie-player>
-      </div>
-    </div>
-  </section>
+  <!-- Hero Section Impactante -->
+<section id="inicio" class="relative overflow-hidden bg-gradient-to-br from-blue-100 via-white to-blue-50 py-28">
+  <!-- Burbuja decorativa superior izquierda -->
+  <div class="absolute top-0 left-0 w-80 h-80 bg-blue-300 opacity-30 rounded-full filter blur-3xl animate-pulse -z-10"></div>
+  <!-- Burbuja decorativa inferior derecha -->
+  <div class="absolute bottom-0 right-0 w-80 h-80 bg-blue-500 opacity-20 rounded-full filter blur-2xl animate-ping -z-10"></div>
+
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-blue-800 leading-tight tracking-tight drop-shadow-sm">
+      <span class="block">Transforma tu negocio</span>
+      <span class="text-blue-900 underline decoration-blue-500 decoration-wavy">con software a medida</span>
+    </h1>
+
+    <p class="mt-6 text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto">
+      Soluciones tecnológicas a tu medida para optimizar, automatizar y llevar tu empresa a un nuevo nivel de eficiencia digital.
+    </p>
+
+    <a href="#servicios" class="mt-10 inline-block bg-gradient-to-r from-blue-600 to-blue-800 text-white text-lg font-semibold px-8 py-4 rounded-2xl shadow-xl hover:scale-105 transform transition-all duration-300">
+      Descubre nuestras soluciones
+    </a>
+
+  </div>
+</section>
+
+
 
  <!-- Servicios -->
 <section id="servicios" class="py-20 bg-white">
@@ -161,48 +175,66 @@
   const listaCarrito = document.getElementById("lista-carrito");
   const contenedorCarrito = document.getElementById("carrito");
   const enviarBtn = document.getElementById("enviar-carrito");
+  const abrirBtn = document.getElementById("abrir-carrito");
+  const cerrarBtn = document.getElementById("cerrar-carrito");
 
   document.querySelectorAll(".add-to-cart").forEach(btn => {
     btn.addEventListener("click", () => {
       const servicio = btn.dataset.servicio;
       carrito.push(servicio);
       actualizarCarrito();
+      contenedorCarrito.classList.remove("hidden");
     });
   });
 
-  const abrirBtn = document.getElementById("abrir-carrito");
+  function actualizarCarrito() {
+    listaCarrito.innerHTML = "";
 
-function actualizarCarrito() {
-  listaCarrito.innerHTML = "";
-  carrito.forEach((servicio, i) => {
-    const li = document.createElement("li");
-    li.textContent = `✅ ${servicio}`;
-    listaCarrito.appendChild(li);
+    carrito.forEach((servicio, index) => {
+      const li = document.createElement("li");
+      li.classList.add("flex", "justify-between", "items-center", "border-b", "pb-1", "mb-1");
+      li.innerHTML = `
+        <span>✅ ${servicio}</span>
+        <button class="text-red-500 hover:text-red-700 font-bold" data-index="${index}">&times;</button>
+      `;
+      listaCarrito.appendChild(li);
+    });
+
+    // Mostrar u ocultar botones y carrito según contenido
+    if (carrito.length > 0) {
+      abrirBtn.classList.remove("hidden");
+      contenedorCarrito.classList.remove("hidden");
+    } else {
+      abrirBtn.classList.add("hidden");
+      contenedorCarrito.classList.add("hidden");
+    }
+
+    // Botones para eliminar elementos
+    document.querySelectorAll("#lista-carrito button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const index = parseInt(btn.dataset.index);
+        carrito.splice(index, 1);
+        actualizarCarrito(); // Recargar el carrito
+      });
+    });
+  }
+
+  abrirBtn.addEventListener("click", () => {
+    contenedorCarrito.classList.remove("hidden");
   });
 
-  if (carrito.length > 0) {
-    contenedorCarrito.classList.remove("hidden");
-    abrirBtn.classList.remove("hidden");
-  }
-}
-
-abrirBtn.addEventListener("click", () => {
-  contenedorCarrito.classList.remove("hidden");
-});
-
+  cerrarBtn.addEventListener("click", () => {
+    contenedorCarrito.classList.add("hidden");
+  });
 
   enviarBtn.addEventListener("click", () => {
     const mensaje = `Hola, estoy interesado en los siguientes servicios:%0A%0A${carrito.map(s => "- " + s).join("%0A")}`;
-    const url = `https://wa.me/50581088124?text=${mensaje}`; 
+    const url = `https://wa.me/50581088124?text=${mensaje}`;
     window.open(url, "_blank");
   });
-
-  const cerrarBtn = document.getElementById("cerrar-carrito");
-
-cerrarBtn.addEventListener("click", () => {
-  contenedorCarrito.classList.add("hidden");
-});
 </script>
+
+
 
       
 
@@ -211,74 +243,54 @@ cerrarBtn.addEventListener("click", () => {
 
  <!-- Contacto -->
 <section id="contacto" class="py-20 bg-blue-50">
-    <div class="max-w-3xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center text-blue-700 mb-12">Contáctanos</h2>
-      <form id="whatsappForm" class="bg-white p-10 rounded-3xl shadow-2xl space-y-8 border border-gray-100">
-        
-        <!-- Nombre -->
-        <div>
-          <label for="nombre" class="block text-gray-800 text-sm font-semibold mb-2">Nombre completo</label>
-          <div class="flex items-center border border-gray-300 rounded-lg px-3 py-2 focus-within:ring-2 focus-within:ring-blue-300 transition">
-            <svg class="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 19.5A7.5 7.5 0 0112 12a7.5 7.5 0 017.5 7.5"></path>
-            </svg>
-            <input id="nombre" type="text" required placeholder="Tu nombre" class="w-full bg-transparent outline-none text-gray-700" />
-          </div>
-        </div>
-  
-        <!-- Correo -->
-        <div>
-          <label for="correo" class="block text-gray-800 text-sm font-semibold mb-2">Correo electrónico</label>
-          <div class="flex items-center border border-gray-300 rounded-lg px-3 py-2 focus-within:ring-2 focus-within:ring-blue-300 transition">
-            <svg class="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-            </svg>
-            <input id="correo" type="email" required placeholder="tunombre@email.com" class="w-full bg-transparent outline-none text-gray-700" />
-          </div>
-        </div>
-  
-        <!-- Mensaje -->
-        <div>
-          <label for="mensaje" class="block text-gray-800 text-sm font-semibold mb-2">Mensaje</label>
-          <textarea id="mensaje" required placeholder="Escribe tu mensaje..." class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-300 transition resize-none text-gray-700" rows="5"></textarea>
-        </div>
-  
-        <!-- Botón -->
-        <div class="text-center">
-          <button type="submit" class="bg-blue-700 text-white px-8 py-3 rounded-full text-lg font-medium shadow-md hover:bg-blue-800 transition">
-            Enviar por WhatsApp
-          </button>
-        </div>
-      </form>
-    </div>
-  </section>
-  
-  <script>
-    document.getElementById('whatsappForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-  
-      const nombre = document.getElementById('nombre').value.trim();
-      const correo = document.getElementById('correo').value.trim();
-      const mensaje = document.getElementById('mensaje').value.trim();
-  
-      if (!nombre || !correo || !mensaje) {
-        alert("Por favor, completa todos los campos.");
-        return;
-      }
-  
-      // Formateamos el texto
-      const texto = `Hola, soy ${nombre} (Email: ${correo}) y me gustaría decir lo siguiente:${mensaje}`;
-      const telefono = '50581088124'; // Asegúrate de que el número esté correctamente escrito
-  
-      // URL de WhatsApp con el número y el mensaje
-      const url = `https://wa.me/${telefono}?text=${encodeURIComponent(texto)}`;
-  
-      // Abrimos WhatsApp en una nueva ventana o pestaña
-      window.location.href = url;
-    });
-  </script>
-  
-  
+  <div class="max-w-3xl mx-auto px-6">
+    <h2 class="text-4xl font-bold text-center text-blue-700 mb-12">Contáctanos</h2>
+    <form id="whatsappForm" class="bg-white p-10 rounded-3xl shadow-2xl space-y-8 border border-gray-100">
+      
+      <!-- Nombre -->
+      <div>
+        <label for="nombre" class="block text-gray-800 text-sm font-semibold mb-2">Nombre completo</label>
+        <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-300 transition">
+      </div>
+
+      <!-- Correo -->
+      <div>
+        <label for="correo" class="block text-gray-800 text-sm font-semibold mb-2">Correo electrónico</label>
+        <input type="email" id="correo" name="correo" required placeholder="Ej: ejemplo@email.com" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-300 transition">
+      </div>
+
+      <!-- Mensaje -->
+      <div>
+        <label for="mensaje" class="block text-gray-800 text-sm font-semibold mb-2">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required placeholder="Cuéntanos más sobre tu proyecto o consulta..." class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-300 transition"></textarea>
+      </div>
+
+      <!-- Botón enviar -->
+      <div class="text-center">
+        <button type="submit" class="bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg hover:bg-blue-800 transition">
+          Enviar por WhatsApp
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Script para enviar formulario por WhatsApp -->
+<script>
+  document.getElementById("whatsappForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    
+    const nombre = document.getElementById("nombre").value.trim();
+    const correo = document.getElementById("correo").value.trim();
+    const mensaje = document.getElementById("mensaje").value.trim();
+    
+    const texto = `Hola, mi nombre es ${nombre}.%0ACorreo: ${correo}%0AMensaje: ${mensaje}`;
+    const url = `https://wa.me/50581088124?text=${encodeURIComponent(texto)}`;
+
+    window.open(url, "_blank");
+  });
+</script>
+
 
 
   <!-- Footer -->
