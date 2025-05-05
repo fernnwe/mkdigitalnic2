@@ -270,13 +270,13 @@
       <!-- Nombre -->
       <div>
         <label for="nombre" class="block text-gray-800 text-sm font-semibold mb-2">Nombre completo</label>
-        <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-300 transition">
+        <input type="text" id="nombre" name="nombre" required placeholder="Ej: Diego Espino" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-300 transition">
       </div>
 
       <!-- Correo -->
       <div>
         <label for="correo" class="block text-gray-800 text-sm font-semibold mb-2">Correo electrónico</label>
-        <input type="email" id="correo" name="correo" required placeholder="Ej: ejemplo@email.com" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-300 transition">
+        <input type="email" id="correo" name="correo" required placeholder="Ej: Diegomaster123@gmail.com" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-300 transition">
       </div>
 
       <!-- Mensaje -->
@@ -304,7 +304,7 @@
     const correo = document.getElementById("correo").value.trim();
     const mensaje = document.getElementById("mensaje").value.trim();
     
-    const texto = `Hola, mi nombre es ${nombre}.%0ACorreo: ${correo}%0AMensaje: ${mensaje}`;
+    const texto = `Hola, mi nombre es ${nombre}.%0ACorreo: ${correo}Mensaje: ${mensaje}`;
     const url = `https://wa.me/50581088124?text=${encodeURIComponent(texto)}`;
 
     window.open(url, "_blank");
