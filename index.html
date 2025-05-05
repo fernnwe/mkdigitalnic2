@@ -248,7 +248,7 @@
   });
 
   enviarBtn.addEventListener("click", () => {
-    const mensaje = `Hola, estoy interesado en los siguientes servicios:%0A%0A${carrito.map(s => "- " + s).join("%0A")}`;
+    const mensaje = `Hola, estoy interesado en los siguientes servicios:${carrito.map(s => "- " + s).join("")}`;
     const url = `https://wa.me/50581088124?text=${mensaje}`;
     window.open(url, "_blank");
   });
@@ -304,7 +304,7 @@
     const correo = document.getElementById("correo").value.trim();
     const mensaje = document.getElementById("mensaje").value.trim();
     
-    const texto = `Hola, mi nombre es ${nombre}.%0ACorreo: ${correo}Mensaje: ${mensaje}`;
+    const texto = `Hola, mi nombre es ${nombre} Correo: ${correo}Mensaje: ${mensaje}`;
     const url = `https://wa.me/50581088124?text=${encodeURIComponent(texto)}`;
 
     window.open(url, "_blank");
