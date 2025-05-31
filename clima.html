@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Clima en tu ciudad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-300 to-blue-600 min-h-screen flex items-center justify-center p-4">
+  <div class="bg-white shadow-2xl rounded-3xl p-8 max-w-xl w-full text-center space-y-6 transition transform hover:scale-105 duration-500">
+    <h1 class="text-3xl font-bold text-gray-800 animate-fade-in">🌦️ Clima en tu ciudad</h1>
+    
+    <div class="flex items-center gap-2">
+      <input
+        type="text"
+        id="ciudad"
+        placeholder="Escribe una ciudad"
+        class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <button
+        onclick="obtenerClima()"
+        class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition font-semibold"
+      >
+        Ver Clima
+      </button>
+    </div>
+
+    <div id="resultado" class="text-lg text-gray-700 font-medium space-y-4"></div>
+  </div>
+
+  <script>
+    function obtenerIconoPorDescripcion(desc) {
+      desc = desc.toLowerCase();
+
+      if (desc.includes("sun") || desc.includes("clear")) {
+        return "https://cdn-icons-png.flaticon.com/512/869/869869.png"; // Sol
+      } else if (desc.includes("rain") || desc.includes("lluvia")) {
+        return "https://cdn-icons-png.flaticon.com/512/414/414974.png"; // Lluvia
+      } else if (desc.includes("cloud") || desc.includes("nublado")) {
+        return "https://cdn-icons-png.flaticon.com/512/414/414927.png"; // Nublado
+      } else if (desc.includes("snow") || desc.includes("nieve")) {
+        return "https://cdn-icons-png.flaticon.com/512/642/642102.png"; // Nieve
+      } else if (desc.includes("storm") || desc.includes("tormenta")) {
+        return "https://cdn-icons-png.flaticon.com/512/1779/1779940.png"; // Tormenta
+      } else {
+        return "https://cdn-icons-png.flaticon.com/512/1163/1163661.png"; // Desconocido
+      }
+    }
+
+    async function obtenerClima() {
+      const ciudad = document.getElementById("ciudad").value.trim();
+      const contenedor = document.getElementById("resultado");
+      contenedor.innerHTML = "";
+
+      if (!ciudad) {
+        contenedor.textContent = "⚠️ Por favor, ingresa una ciudad.";
+        return;
+      }
+
+      const url = `https://wttr.in/${ciudad}?format=j1`;
+
+      try {
+        const respuesta = await fetch(url);
+        const datos = await respuesta.json();
+
+        const climaActual = datos.current_condition[0];
+        const descripcion = climaActual.weatherDesc[0].value;
+        const temperatura = climaActual.temp_C;
+        const icono = obtenerIconoPorDescripcion(descripcion);
+
+        const htmlClimaActual = `
+          <div class="flex flex-col items-center space-y-2 animate-fade-in-down">
+            <img src="${icono}" alt="${descripcion}" class="w-16 h-16">
+            <p class="text-xl font-semibold">${ciudad}</p>
+            <p class="text-gray-700">${descripcion} - ${temperatura}°C</p>
+          </div>
+        `;
+
+        // Pronóstico de 3 días
+        const htmlPronostico = datos.weather.slice(0, 3).map((dia, i) => {
+          const fecha = new Date(dia.date).toLocaleDateString("es-ES", {
+            weekday: "long",
+            day: "numeric",
+            month: "short"
+          });
+          const tempMin = dia.mintempC;
+          const tempMax = dia.maxtempC;
+          const desc = dia.hourly[4].weatherDesc[0].value;
+          const icon = obtenerIconoPorDescripcion(desc);
+
+          return `
+            <div class="flex items-center justify-between bg-blue-100 rounded-lg p-3">
+              <div class="text-left">
+                <p class="font-semibold capitalize">${fecha}</p>
+                <p class="text-sm text-gray-600">${desc}</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <img src="${icon}" alt="${desc}" class="w-8 h-8" />
+                <p>${tempMin}°C - ${tempMax}°C</p>
+              </div>
+            </div>
+          `;
+        }).join("");
+
+        contenedor.innerHTML = `
+          ${htmlClimaActual}
+          <div class="space-y-2 mt-4">
+            <h2 class="text-lg font-bold text-gray-800">Pronóstico de 3 días</h2>
+            ${htmlPronostico}
+          </div>
+        `;
+      } catch (error) {
+        contenedor.textContent = "❌ Error al obtener el clima.";
+      }
+    }
+  </script>
+
+  <style>
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fade-in-down {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-fade-in {
+      animation: fade-in 0.8s ease-in-out;
+    }
+
+    .animate-fade-in-down {
+      animation: fade-in-down 0.8s ease-in-out;
+    }
+  </style>
+</body>
+</html>
